@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>MediaLayer with video | Sample | ArcGIS API for JavaScript 4.24</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/dark/main.css" />
+    <script src="https://js.arcgis.com/4.24/"></script>
+    <script src="query.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <style>
+      html,
+      body,
+      #container{ 
+        width:100%;
+        height:100%;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+      }
+      #viewDiv {
+        height: 100%;
+        width: 95%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #options{ 
+        width:5%;
+        height:100vh;
+        background-color:black;
+        padding-top: 10%;
+        padding-left: 1%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type="radio"]{
+      -webkit-appearance:none;
+  }
+  label{
+      
+      position: relative;
+      margin: auto;
+      border-radius: 10px;
+      color: gray;
+      transition: 0.5s;
+      right:3%;
+
+  }
+  
+  label>span{
+      font-size: 10px;
+      position: absolute;
+      top:50%;
+      left: 15%;
+      transform: translate(-50%,80%);
+      font-family: "Poppins",sans-serif;
+      font-weight: 500;
+  }
+  input[type="radio"]:checked + label{
+      
+      color: white;
+      box-shadow: 0 15px 45px rgba(24,249,141,0.2);
+  }
+  .option{ 
+      margin-top: 15%;
+      margin-right: 2%;
+      margin-top: 40%;
+  }
+  .fa{
+      font-size: 25px;
+  }
+    </style>
+    
+  </head>
+
+  <body>
+    <div id="container">
+
+      <div id="options">
+            <div class="option">
+                <input id="fire" name="modelA" type="radio" value="fire" >
+                <label for="fire" >
+                    <i class="fa fa-fire" aria-hidden="true"></i>
+                </label>
+            </div>
+
+           
+            <div class="option">
+                <input id="pollution" name="modelA" type="radio" value="pollution" checked>
+                <label for="pollution" >
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </label>
+            </div>
+
+        </div>
+        <div id="viewDiv">
+
+
+        </div>
+
+
+    </div>
+
+    <script>
+      var ele = document.getElementsByName("modelA");
+
+      for (i = 0; i < ele.length; i++) {
+        ele[i].onclick = (e) => {
+    
+          console.log("clicked");
+          model = e.target.value;
+          switch(model) {
+            case 'fire':
+              // code block
+              showModelFire();
+              break;
+        
+            default:
+              // code block
+              showModelPolution();
+          }
+         
+        };
+      }
+  </script>
+    
+  </body>
+</html>
